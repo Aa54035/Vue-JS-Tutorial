@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+         
+        body {
+            background-color: #E0FEFE;
+            max-width: 1000px;
+            margin: 20px  auto;
+        }
+        p,h3,ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 2px solid black;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #97A1F9;
+            list-style-type: none;
+            border-radius: 100px;
+
+        }
+
+        li.fav  {
+            background-color: #d07cad;
+            font-style: bold;
+
+        }
+    </style>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1>This is my Vue JS Tutorial </h1>
+
+    <div id="app2">
+        <div v-if="!showBooksDetails">
+
+            <h2>{{title}}</h2>
+            <h3>{{author}}</h3>
+            <h4>{{Age}}</h4>
+            <h5>{{xPoistion}}</h5>
+            <h5>{{yPoistion}}</h5>
+
+
+        </div>
+        <!-- onlye when ouputing to browser then {{ }} required  
+            v-on is direactive and click is an event-->
+
+        <!-- <button v-on:click="Age++">Increase Age #</button>
+        <br>
+        <br>
+        <button v-on:click="Age--">Decreament Age #</button>
+
+        <div @click="changeTitle">Change title </div>
+        <!-- we just need to reference it not invoke it  -->
+        <!-- <div @click="changeTitle2('Vue JS tutorial')">Change title again</div>
+        <div @click="showDetails">Hide the details</div> --> -->
+        <button>{{message}}</button>
+
+        <div @click="toggleShow">
+            <span v-if="showBooksDetails">Hide the books </span>
+            <span v-else>Show the books </span>
+
+        </div>
+
+        <a v-bind:href="url"> Go To Google . com </a>
+
+        <div v-if="showBooksDetails">
+            <ul>
+                <li v-for="items in books" :class="{ fav:items.isfave }" @dblclick="changeFav(items)">
+                    <img :src="items.img" :alt="items.bookName">
+                    <h3> {{items.bookName}} </h3>
+                    <p> {{items.writer}} </p>
+                </li>
+            </ul>
+        </div>
+        <div v-show="showBooksDetails">Hide the book details </div>
+
+        <h2>Filter Books which are favourites </h2>
+        
+        <div v-if="showBooksDetails">
+            <ul>
+                <li v-for="items in filterBooks" >  
+                    <!-- Filter Books is Filter property in Vue JS -->
+                    <img :src="items.img" :alt="items.bookName">
+                    <h3> {{items.bookName}} </h3>
+                    <p> {{items.writer}} </p>
+                </li>
+            </ul>
+        </div>
+        <div v-show="showBooksDetails">Hide the book details </div>
+<!-- 
+
+        <!-- 
+        <div class="box" @mouseover="mouseAction($event,'ashish')">Box1</div>
+        <div class="box" @mouseleave="mouseAction($event,'Bhushan')">Box2</div>
+        <div class="box" @dblclick="mouseAction($event)">Box3</div>
+        <div class="box" @mousemove="mouseAction($event,'over')"> postions is {{xPoistion}} {{xPoistion}}</div>
+
+        <div class="box">Box4</div> -->
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
